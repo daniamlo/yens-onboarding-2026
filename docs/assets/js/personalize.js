@@ -1,7 +1,8 @@
 /* Fill the student's own identifiers into the commands on the page.
  *
  * The pages are written with placeholders — SUNetID for the Stanford account,
- * YOUR_GITHUB_USERNAME (and YOUR_USERNAME in diagrams) for the GitHub one.
+ * YOUR_GITHUB_USERNAME (and YOUR_USERNAME in diagrams) for the GitHub one, and
+ * YENNODE for whichever interactive Yen the load balancer handed them.
  * Setting a value once rewrites every one of them, so a student can copy a
  * command straight out of the page instead of pasting it and then editing it in
  * the terminal, which is where the typos happen.
@@ -29,11 +30,19 @@
 
   var SVG_NS = 'http://www.w3.org/2000/svg';
 
+  // `where` names the control that fills the field, for the tooltip on a
+  // placeholder: two of these live in the sidebar, the third does not.
   var FIELDS = {
-    sunet:  { key: 'yens-sunet',       label: 'SUNet ID',        tokens: ['SUNetID'] },
+    sunet:  { key: 'yens-sunet',       label: 'SUNet ID',        where: 'the sidebar', tokens: ['SUNetID'] },
     // yens-gh-username predates this script; kept so anyone who already typed
     // their GitHub name on Git & GitHub does not have to type it again.
-    github: { key: 'yens-gh-username', label: 'GitHub username', tokens: ['YOUR_GITHUB_USERNAME', 'YOUR_USERNAME'] }
+    github: { key: 'yens-gh-username', label: 'GitHub username', where: 'the sidebar', tokens: ['YOUR_GITHUB_USERNAME', 'YOUR_USERNAME'] },
+    // Which interactive Yen they landed on. Unlike the two above, this changes
+    // at every login, so it lives in sessionStorage: a stale yen3 tomorrow
+    // would aim the second terminal at the wrong machine, which is the one
+    // thing Profiling's two-terminal exercise cannot survive. Only that page
+    // needs it, so its control is inline there rather than in the sidebar.
+    yen:    { key: 'yens-node',        label: 'Yen node',        where: 'Step 1', session: true, tokens: ['YENNODE'] }
   };
   var NAMES = Object.keys(FIELDS);
 
@@ -45,15 +54,19 @@
   });
   TOKENS.sort(function (a, b) { return b.token.length - a.token.length; });
 
+  function store(name) {
+    return FIELDS[name].session ? window.sessionStorage : window.localStorage;
+  }
+
   function read(name) {
-    try { return (window.localStorage.getItem(FIELDS[name].key) || '').trim(); }
+    try { return (store(name).getItem(FIELDS[name].key) || '').trim(); }
     catch (e) { return ''; }                       // private mode
   }
 
   function write(name, value) {
     try {
-      if (value) window.localStorage.setItem(FIELDS[name].key, value);
-      else window.localStorage.removeItem(FIELDS[name].key);
+      if (value) store(name).setItem(FIELDS[name].key, value);
+      else store(name).removeItem(FIELDS[name].key);
     } catch (e) { /* private mode — substitution still works for this page */ }
   }
 
@@ -156,7 +169,7 @@
       if (value) {
         el.removeAttribute('role');
         el.removeAttribute('tabindex');
-        el.setAttribute('title', 'Your ' + FIELDS[field].label + ' — change it in the sidebar');
+        el.setAttribute('title', 'Your ' + FIELDS[field].label + ' — change it in ' + FIELDS[field].where);
       } else {
         el.setAttribute('role', 'button');
         el.setAttribute('tabindex', '0');
@@ -190,11 +203,12 @@
 
   // ── Inputs ───────────────────────────────────────────────────────────────
 
-  // Every input bound to a field, wherever it lives: the sidebar renders twice
-  // (desktop and mobile), and Git & GitHub has one inline in a callout.
+  // Every control bound to a field, wherever it lives: the sidebar renders
+  // twice (desktop and mobile), Git & GitHub has one inline in a callout, and
+  // Profiling has a <select> — five nodes exist, so picking beats typing.
   function inputs() {
     return Array.prototype.slice.call(
-      document.querySelectorAll('input[data-personalize]')
+      document.querySelectorAll('input[data-personalize], select[data-personalize]')
     );
   }
 
@@ -208,7 +222,7 @@
     if (!target) return;
     target.scrollIntoView({ block: 'center' });
     target.focus();
-    target.select();
+    if (target.select) target.select();            // a <select> has no select()
   }
 
   document.addEventListener('click', function (e) {
