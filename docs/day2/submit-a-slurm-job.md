@@ -666,6 +666,7 @@ When writing a Yen job script:
 - Email on completion: `--mail-type=ALL`, `--mail-user=SUNetID@stanford.edu`
 - Name logs `logs/<job-name>_%j.out` and `.err`
 ```
+{: .file }
 
 The **`description` is the trigger** — Claude reads it to decide when to pull the skill in. Leave it vague ("slurm stuff") and it won't fire when you need it; say what it does *and when to use it*.
 

@@ -60,6 +60,7 @@ Now that you've profiled **10 filings**, write down what you measured. Open the 
 - RAM used (RES from htop, or % Mem from userload):
 - Serial or parallel:
 ```
+{: .file }
 
 {: .tip }
 > If your RAM here is tiny — just a few MB (`RES`), showing as 0% Mem in `userload` — you can't ask for 0, so a good tip is to write down a small round number like `1G`.

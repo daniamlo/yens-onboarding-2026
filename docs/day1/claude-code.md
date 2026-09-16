@@ -236,7 +236,7 @@ That has a blunt consequence: **Claude Code can do anything you can do.** It can
 Everything above is reading; everything below is on the keyboard. Budget about **20
 minutes**, and work through it in order — each step assumes the one before it. If you are
 running short, [Take Claude Code for a Spin](#exercise--take-claude-code-for-a-spin) and
-[The github-for-research Skill](#the-github-for-research-skill) are the two that Part 2
+[Install the github-for-research Skill](#exercise--install-the-github-for-research-skill) are the two that Part 2
 and the checkpoint actually need.
 
 ## Exercise — Take Claude Code for a Spin
@@ -314,7 +314,10 @@ cd ~/yens-onboarding-2026
 
 ---
 
-## The github-for-research Skill
+## Exercise — Install the github-for-research Skill
+
+{: .exercise }
+> Install the skill this course ships, and see where it lands on disk.
 
 You just met skills in the abstract; here's the one this course ships. **github-for-research** teaches Claude Code some opinionated, but informed, best practices about how to use GitHub as part of a research project at the GSB:
 
