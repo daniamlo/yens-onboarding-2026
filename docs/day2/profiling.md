@@ -78,8 +78,8 @@ hostname
 
 {: .tip }
 > **Pick what it printed** and every command on this page fills itself in, so you can copy
-> them without editing. The load balancer hands out yen1–yen5, so yours is probably not the
-> one in the examples — and both terminals have to land on the *same* node.
+> them without editing. The load balancer hands out yen1–yen5, and both terminals have to
+> land on the *same* node.
 >
 > <span class="personalize-field"><select id="yen-node" data-personalize="yen"><option value="">choose…</option><option>yen1</option><option>yen2</option><option>yen3</option><option>yen4</option><option>yen5</option></select><label class="personalize-affix personalize-affix-end" for="yen-node">.stanford.edu</label></span>
 
