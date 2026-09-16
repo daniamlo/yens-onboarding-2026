@@ -9,16 +9,11 @@ permalink: /day1/connect-to-the-yens/
 
 # Connecting to the Yens
 
-SSH lets you connect from your laptop to a remote computer and run commands there
-as if you were sitting at it. In this section you will log in to the Yens for the
-first time. Where your files go once you are there is the next section,
-[Your Data on the Yens]({{ '/day1/your-data/' | relative_url }}).
+In this section you will log in to the Yens for the first time.
 
 {: .important }
-> **Do this section first — give it about 10 minutes.** Everything else in Day 1 runs on
-> the Yens, so nothing later will work until this does. All you need is a terminal: the
-> built-in **Terminal** app on macOS, or <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git Bash</a> on
-> Windows.
+> All you need is a terminal: the built-in **Terminal** app on macOS, or
+> <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git Bash</a> on Windows.
 >
 > If your login does not work, put up a red sticky rather than reading ahead. An account
 > that was never provisioned is the one problem on this page you cannot solve on your own —
@@ -45,7 +40,7 @@ Your laptop is fine for writing code and running small tests. But research compu
 | Data is restricted (IRB, NDA) | Must stay on Stanford systems | Yens are Stanford-managed infrastructure |
 | Collaborating with your PI | "Can you send me the data?" | PI already has access to `/yen/projects/` |
 
-The Yens are available to all researchers at GSB — faculty, PhD students, post-docs, and research staff alike. This section is where you start using them.
+The Yens are available to all researchers at GSB — faculty, PhD students, pre-docs, post-docs, and research staff alike. This section is where you start using them.
 
 {: .note }
 > *"My regression on the full sample took 14 hours. My laptop died at hour 6. I lost everything. Two days later I reran it on the Yens and went to sleep. It finished while I was gone."* — PhD Student
@@ -70,7 +65,9 @@ about to run. (It is not your GitHub username — that one comes up in the next 
 
 ## What Are the Yens?
 
-The Yens are a 17-node shared research computing cluster: 5 interactive nodes you SSH into directly, and 12 nodes accessible only through the SLURM scheduler (Day 2). All 17 nodes share the same file system — a file you write on yen1 is instantly visible on every other node.
+The Yens are a 17-node shared research computing cluster: 5 interactive nodes you connect to directly, and 12 nodes accessible only through the SLURM scheduler (Day 2). All 17 nodes share the same file system — a file you write on yen1 is instantly visible on every other node.
+
+You'll connect using the `ssh` command. `ssh` opens an encrypted tunnel: you type locally, commands execute remotely, output streams back to your screen.
 
 <svg viewBox="0 0 700 516" role="img" aria-labelledby="ssh-title" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;max-width:700px;height:auto;margin:1.5rem auto" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
   <title id="ssh-title">Your laptop connects over SSH to the remote Yens cluster. You land on a shared interactive Yen for light work; the powerful SLURM compute nodes are reached later, on Day 2, through a scheduler. Every node shares the same storage.</title>
@@ -124,7 +121,7 @@ The Yens are a 17-node shared research computing cluster: 5 interactive nodes yo
   <text x="60" y="482" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" fill="#5b6472">/scratch/users/SUNetID/<tspan font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#6a7280">   large &amp; fast · NOT backed up</tspan></text>
 </svg>
 
-`ssh` opens an encrypted tunnel: you type locally, commands execute remotely, output streams back to your screen. The interactive Yens are shared — per-user CPU and RAM limits are enforced automatically. See the <a href="https://rcpedia.stanford.edu/_policies/user_limits/" target="_blank" rel="noopener noreferrer">current limits</a> for details. For heavier jobs, the SLURM scheduler (Day 2) gives you dedicated compute nodes.
+The interactive Yens are shared — per-user CPU and RAM limits are enforced automatically. See the <a href="https://rcpedia.stanford.edu/_policies/user_limits/" target="_blank" rel="noopener noreferrer">current limits</a> for details. For heavier jobs, the SLURM scheduler (Day 2) gives you dedicated compute nodes.
 
 **What's inside a Yen server:**
 
@@ -169,7 +166,7 @@ ls /yen/projects/                 # shared project storage
 {: .yens }
 
 {: .tip }
-> **Two keys that will save you the most typing.** Nobody types these paths out in full — and you shouldn't either.
+> **Two keys that will save you the most typing.**
 >
 > - <kbd>↑</kbd> — the up-arrow key walks back through commands you have already run, newest first. Recall one, edit it, and press <kbd>Enter</kbd>. Retyping a long path by hand is how typos get made.
 > - <kbd>Tab</kbd> — start a file or directory name and press it; the shell finishes the name for you. Press it twice to list every match when more than one fits.

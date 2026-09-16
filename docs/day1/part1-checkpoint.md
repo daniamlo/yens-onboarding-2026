@@ -11,7 +11,7 @@ permalink: /day1/part1-checkpoint/
 
 Nobody learns the terminal, cluster storage, git and Claude Code in an hour, and Part 1
 did not try to. What it did was get each of them working once, in your hands, on a real
-repo — which is the part you cannot read your way to.
+repo.
 
 Before moving on, here is a sanity check to make sure you're ready for Part 2. If you had
 to skip over some material in Part 1, that's OK! You can always come back and review it
@@ -95,7 +95,7 @@ git push -u origin checkpoint
 {: .yens }
 
 Then open <a href="https://github.com/YOUR_GITHUB_USERNAME/yens-onboarding-2026/commits/checkpoint" target="_blank" rel="noopener noreferrer">the <code>checkpoint</code> branch on your fork</a> and confirm your commit is on it. If the push succeeded without asking for a password, check 2 is genuinely
-working — that is the real thing this step tests.
+working.
 
 {: .note }
 > Committing to a branch, not `main`. That is the habit the whole course runs on, and
@@ -139,4 +139,4 @@ go at the bonus exercises rather than starting Part 2:
 
 - [Skip the repeated logins with SSH multiplexing]({{ '/day1/connect-to-the-yens/#bonus' | relative_url }}) — authenticate once instead of on every connection
 - [Investigate a well-kept repo]({{ '/day1/claude-code/#bonus--investigate-a-well-kept-repo' | relative_url }}) — ask Claude Code questions about a project you have never seen
-- [Put Claude Code to work]({{ '/day1/claude-code/#bonus--put-claude-code-to-work' | relative_url }}) — publish your own copy of this site from your fork, then change it
+- [Have Claude Code drive GitHub and change this site]({{ '/day1/claude-code/#bonus--have-claude-code-drive-github-and-change-this-site' | relative_url }}) — publish your own copy of this site from your fork, then change it

@@ -10,15 +10,15 @@ permalink: /day1/claude-code/
 # Working with Claude Code
 
 
-You've set up Git and made your first commit by hand. Claude Code is a tool that can do that kind of work for you — and much more. This section covers what it is, how it works, how to get it through Stanford, and what data you can and can't give it.
+You've set up Git and made your first commit by hand. Claude Code is a tool that can do that kind of work for you, and much more. This section covers what it is, how it works, how to get it through Stanford, and what data you can and can't give it.
 
 ---
 
 ## Meet Claude Code
 
-In **Git & GitHub for Research** you worked through fork, clone, branch, commit, and push by hand. That was the point: you now know what each step *means*. From here on, you don't have to type it yourself.
+In **Git & GitHub for Research** you worked through fork, clone, branch, commit, and push by hand. That was the point: you now know what each step does. From here on, you don't have to type it yourself.
 
-**Claude Code** is an AI assistant that lives in your terminal: you describe what you want in plain English, and it does the work — running commands, editing files, and handling git for you.
+**Claude Code** is an AI assistant that lives in your terminal: you describe what you want in plain English, and it does the work of running commands, editing files, and handling git for you.
 
 {: .note }
 > **We teach Claude Code, but we have no preference.** OpenAI's **Codex** is the other
@@ -27,21 +27,21 @@ In **Git & GitHub for Research** you worked through fork, clone, branch, commit,
 > and what you must not feed them; that carries over. We picked one so the exercises could
 > give you exact commands to follow. Use whichever you prefer, or both.
 
-You just saw *why* keeping your work in GitHub is worth the trouble (see [Git & GitHub for Research]({{ '/day1/git-and-github/' | relative_url }})) — and those are exactly the habits Claude Code can handle for you. You will **not** memorize the commands for any of it. You say *"log this as an issue"* or *"try this on a branch,"* and Claude Code does it. Git is one of the most heavily documented tools in existence — decades of commands, error messages, and public questions and answers — so its workflow is something Claude knows cold rather than something you have to spell out. It can also read the repository's actual state as it goes, so it checks where it is instead of guessing.
+[Git & GitHub for Research]({{ '/day1/git-and-github/' | relative_url }}) covered why keeping your work on GitHub is worth the effort. Those are habits Claude Code can handle for you, and you will **not** memorize the commands for any of it. You say "log this as an issue" or "try this on a branch," and Claude Code does it. Git is heavily documented — decades of commands, error messages, and public questions and answers. Claude knows the workflow without being told. It also reads the repository's state as it goes, so it checks where it is instead of guessing.
 
-**Getting access.** You don't need a personal account. Stanford runs **Claude for Education** — a secure, university-managed environment — and it's **free for everyone at Stanford**.
+**Getting access.** You don't need a personal account. Stanford runs **Claude for Education**, a secure, university-managed environment, and it's **free for everyone at Stanford**.
 
 - **Why go through Stanford?** Your work stays under Stanford's data-governance terms. Claude Code is approved for use with Stanford data when terms and conditions allow it. Stanford's <a href="https://uit.stanford.edu/ai/genai-tool-matrix" target="_blank" rel="noopener noreferrer">GenAI tool matrix</a> has the latest on data categories and approved tools. For research, it is always preferred to use your Stanford account.
-- **How to get it.** The **Standard tier is free** for all active faculty, students, postdocs, and staff with a SUNet ID. (A **Premium tier** is available if you have a PTA — a Stanford billing account your lab may hold.) Free still means you request it once, through **ServiceNow** (Stanford's IT request website) — it's a quick approval, not a purchase.
+- **How to get it.** The **Standard tier is free** for all active faculty, students, postdocs, and staff with a SUNet ID. (A **Premium tier** is available if you have a PTA — a Stanford billing account your lab may hold.) Free still means you request it once, through **ServiceNow** (Stanford's IT request website). It's a quick approval, not a purchase.
 
 {: .note }
-> Full details and the request links live at <a href="https://uit.stanford.edu/service/claude" target="_blank" rel="noopener noreferrer">uit.stanford.edu/service/claude</a> — request it there yourself; approval is quick but not instant, so start it before you need it.
+> Full details and the request links live at <a href="https://uit.stanford.edu/service/claude" target="_blank" rel="noopener noreferrer">uit.stanford.edu/service/claude</a>. Request it there yourself; approval is quick but not instant, so start it before you need it.
 
 ---
 
 ## How Claude Code Works
 
-A few basics worth knowing before you start.
+A few basics before you start.
 
 <svg viewBox="0 0 1000 560" role="img" aria-label="How Claude Code works: on your machine you give the harness instructions and point it at your data — check before sharing. The harness acts as you (editing files, running commands, driving git, calling tools) and loops those results back to itself. It exchanges context with Claude's model on Anthropic's server, across the campus perimeter, reached via Stanford's governed route." xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;max-width:1000px;height:auto;margin:1.5rem auto" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
   <defs>
@@ -113,7 +113,7 @@ A few basics worth knowing before you start.
   <text x="684" y="382" text-anchor="middle" font-size="14" fill="#8a94a6" stroke="#ffffff" stroke-width="5" paint-order="stroke" stroke-linejoin="round">loops until done</text>
 </svg>
 
-**The model and the harness — the brain and the hands.** *Claude* is the **LLM** (large language model — the AI "brain" itself): it reads, reasons, and writes. On its own, it can only talk. **Claude Code** is the *harness* around that brain — it hands Claude real tools: read your files, run commands, edit code, use git. The model is the expert; the harness is the desk, the tools, and permission to act.
+**The model and the harness.** *Claude* is the **LLM** (large language model): it reads, reasons, and writes. On its own, it can only talk. **Claude Code** is the *harness* around it, and the harness hands Claude real tools: read your files, run commands, edit code, use git.
 
 ### The models — and how to switch them
 
@@ -132,48 +132,47 @@ Switch anytime with the `/model` command. Default to a capable model; drop to a 
 > models above, so asking for a fourth — **Fable** — returns `Model 'fable' is restricted by
 > your organization's settings` instead of switching. Fable falls outside the data-retention
 > terms Stanford has agreed with Anthropic, so it is not approved for university work.
-> There is nothing to configure here: the approved models are the ones already listed.
 
 ### Permission modes — how much Claude does before asking
 
-How much Claude checks in before acting is up to you. The **permission mode** sets that — from asking before every single edit to running on its own — so it is worth knowing which one you are in. Press <kbd>Shift</kbd>+<kbd>Tab</kbd> to cycle through the modes (the current one shows at the bottom of the screen, e.g. `⏸ plan mode on`, `⏵⏵ accept edits on`):
+How much Claude checks in before acting is up to you, and the **permission mode** sets it: anything from asking before every single edit to running on its own. Press <kbd>Shift</kbd>+<kbd>Tab</kbd> to cycle through the modes (the current one shows at the bottom of the screen, e.g. `⏸ plan mode on`, `⏵⏵ accept edits on`):
 
-- **Manual** (the default): Claude reads freely, but asks before it edits a file or runs a command. Safest, and a good place to start — with two exceptions worth knowing: commands it classes as read-only run without asking, and once you answer **"Yes, and don't ask again,"** that approval is remembered. For an edit that lasts the rest of the session; for a command it is saved to the repository and applies in future sessions too.
+- **Manual** (the default): Claude reads freely, but asks before it edits a file or runs a command. Safest, and a good place to start, with two exceptions: commands it classes as read-only run without asking, and once you answer **"Yes, and don't ask again,"** that approval is remembered. For an edit that lasts the rest of the session; for a command it is saved to the repository and applies in future sessions too.
 - **Accept edits:** Claude applies its file edits (and common file commands like creating folders) without asking each time, but still stops before running other commands. Good once you trust the direction and don't want to approve every edit.
-- **Plan:** Claude investigates and writes up a plan but changes *nothing* — no edits, no commands that alter anything — until you approve. Perfect when you want to see the approach first.
-- **Auto:** Claude does everything on its own — editing files and running commands as it goes — with background safety checks that block the riskiest actions. Fastest, but least oversight: it reduces prompts, it doesn't guarantee safety, so use it only when you trust the task.
+- **Plan:** Claude investigates and writes up a plan but changes nothing until you approve: no edits, no commands that alter anything. Use it when you want to see the approach first.
+- **Auto:** Claude does everything on its own, editing files and running commands as it goes, with background safety checks that block the riskiest actions. Fastest, but least oversight: it reduces prompts without guaranteeing safety, so use it only when you trust the task.
 
 {: .note }
 > **This is why manual mode sometimes acts without asking you.** Saved approvals accumulate,
 > so a command you allowed last week runs silently this week. Type `/permissions` to see
 > every rule currently in force and remove any you did not mean to keep.
 
-*Start in manual to stay in control; use plan mode when you want a proposal first; move to accept-edits or auto once you trust where it's headed.*
+Start in manual mode to get a flavor for how Claude Code works. Move to accept-edits or auto once you trust where a task is headed. A popular paradigm is to use plan mode to develop and refine a plan, and then auto to execute it.
 
 ### Tokens — how Claude reads, and what it costs
 
-Claude doesn't read letter by letter or word by word — it reads in **tokens**. A token is a chunk of text: very roughly **¾ of a word**, or about **4 characters**. "Repository" is a couple of tokens; a full page of prose is around 500.
+Claude reads text in **tokens**, not letters or words. A token is a chunk of text: very roughly **¾ of a word**, or about **4 characters**. "Repository" is a couple of tokens; a full page of prose is around 500.
 
-Everything is counted this way — the text you send *and* the text Claude sends back. Tokens matter for two reasons: they are **how much Claude can hold at once** (see *Context*, next), and they are **how paid AI services charge** — a fixed price per token.
+Everything is counted this way: the text you send and the text Claude sends back. Tokens matter for two reasons: they are **how much Claude can hold at once** (see *Context*, next), and they are **how paid AI services charge**, at a fixed price per token.
 
 *Type `/cost` any time to see how many tokens the current session has used.*
 
 {: .important }
-> **Run out of usage and you wait — you can't pay for more.** Stanford gives you Claude on a **managed plan with a usage limit**, not the pay-per-token billing a personal account would have. When you use up your allowance, Claude Code **pauses until your limit resets after a set time** — there is no "just charge me for more tokens" button. To make your usage last: switch to a lighter model with `/model` (Haiku and Sonnet cost far less than Opus), keep each session to one focused task, and use `/clear` or `/compact` so you're not re-sending a large context every turn.
+> **Watch your usage! If you run out, you can't swipe your credit card for more.** Stanford gives you Claude on a **managed plan with a usage limit**, not the pay-per-token billing a personal account would have. When you use up your allowance, Claude Code **pauses until your limit resets after a set time**. There is no "just charge me for more tokens" button. To make your usage last: switch to a lighter model with `/model` (Haiku and Sonnet cost far less than Opus), keep each session to one focused task, and use `/clear` or `/compact` so you're not re-sending a large context every turn.
 
 ### Context — Claude's working memory, and when to clear it
 
-The **context** (or *context window*) is everything Claude can see right now: your conversation, any files it has read, and its own replies so far. It's measured in tokens — large, but not infinite.
+The **context** (or *context window*) is everything Claude can see right now: your conversation, any files it has read, and its own replies so far. It's measured in tokens: large, but not infinite.
 
-A long session slowly fills the window. When it's full, or when the conversation has drifted far from the task at hand, the fix is to **start fresh**: `/clear` wipes the slate so the next question gets Claude's full attention. `/context` shows how full the window currently is.
+A long session slowly fills the window. When it's full, or when the conversation has drifted far from the task at hand, the fix is to **start fresh**: `/clear` empties the window so the next question starts clean. `/context` shows how full the window currently is.
 
 If you're filling up but *don't* want to lose the thread, **`/compact`** is the middle ground: it replaces the long back-and-forth with a short summary, freeing room while keeping what matters. Use `/compact` to keep going on the same task; use `/clear` when you're moving on to a new one.
 
-*Rule of thumb: one focused task per conversation. A clean context beats a cluttered one every time.*
+Aim for one focused task per conversation.
 
 ### Memory — the notebook Claude keeps
 
-Context is erased the moment you `/clear` or close the terminal. **Memory** is what survives — and it comes in two forms:
+Context is erased the moment you `/clear` or close the terminal. **Memory** is what survives, in two forms:
 
 - **A `CLAUDE.md` file in your project.** A plain-text note you commit alongside your code, telling Claude how *this* project works — where the data lives, how to run things, conventions to follow. Every future session (yours or a collaborator's) reads the same file, which makes your project easier to pick back up and to reproduce.
 - **Personal memory across sessions** — facts about you and how you like to work, remembered from one sitting to the next.
@@ -182,9 +181,9 @@ Context is erased the moment you `/clear` or close the terminal. **Memory** is w
 
 ### Skills — standing instructions for how your group works
 
-A **skill** is a reusable set of instructions that Claude Code pulls in whenever it's relevant — so it follows your group's way of doing things without being told each time. If *memory* is a set of facts, a *skill* is a way of working.
+A **skill** is a reusable set of instructions that Claude Code pulls in whenever it's relevant, so it follows your group's way of doing things without being told each time. Where memory holds facts, a skill describes a way of working.
 
-Skills can come from Stanford, from your lab, or ones you write yourself. This course ships one — **github-for-research** — which you'll install just below, and you'll see exactly where it lands on disk.
+Skills can come from Stanford, from your lab, or ones you write yourself. This course ships one, **github-for-research**, which you'll install just below and then find on disk.
 
 ### MCP servers — new tools, not new instructions
 
@@ -192,14 +191,14 @@ A skill changes *how* Claude works. An **MCP server** changes *what it can reach
 
 Out of the box the harness hands Claude a fixed set of tools: read a file, run a command, edit code, drive git. An MCP server adds tools beyond that set — a database it can query, an internal API, a service like GitHub or Zotero. **MCP** is the *Model Context Protocol*, an open standard for describing a tool once so that any assistant speaking the protocol can use it; it is not Anthropic-only, which is why the same server works in other editors and agents too. Type `/mcp` to see what a session has connected.
 
-This is the piece worth filing away for later. If your group has a data source everyone reaches with their own half-remembered script — an admin database, a licensed feed, a lab instrument's API — wrapping it in an MCP server *once* lets Claude query it the same way for everyone, instead of each person re-explaining it every time. Writing one is a normal programming job: you describe each tool, its inputs, and what it returns.
+File this one away for later. If your group has a data source everyone reaches with their own half-remembered script — an admin database, a licensed feed, a lab instrument's API — wrapping it in an MCP server *once* lets Claude query it the same way for everyone, instead of each person re-explaining it every time. Writing one is a normal programming job: you describe each tool, its inputs, and what it returns.
 
 {: .warning }
-> An MCP server is a route your data travels along, and the tools it exposes run with your access — same as everything else on this page. A server that can reach restricted data can hand it to the model as easily as a file you opened yourself, so connecting one is a decision about data governance, not just convenience.
+> An MCP server is a route your data travels along, and the tools it exposes run with your access — same as everything else on this page. A server that can reach restricted data can hand it to the model as easily as a file you opened yourself, so treat connecting one as a data-governance decision.
 
 ### Plugins — how a skill or a tool gets shared
 
-A skill is a folder of instructions. An MCP server is a set of tools. A **plugin** is the box you ship either one in: a single directory that can hold skills, MCP servers, [hooks]({{ '/reference/llm-failure-modes/' | relative_url }}), and purpose-built subagents, versioned together so people get a known-good set rather than a pile of files to copy.
+A **plugin** is the box you ship a skill or an MCP server in: a single directory that can hold skills, MCP servers, [hooks]({{ '/reference/llm-failure-modes/' | relative_url }}), and purpose-built subagents, versioned together so people get a known-good set rather than a pile of files to copy.
 
 Type `/plugin` to browse what's available and install one; the browser shows you what a plugin would add and what it costs you in context before you commit to it.
 
@@ -212,29 +211,25 @@ Type `/plugin` to browse what's available and install one; the browser shows you
 
 Before you point Claude Code at real work, keep two things straight: **what data leaves your machine**, and the fact that **it acts with your full access**.
 
-### What leaves your machine — and what must not
+### Understanding how Claude Code sends data to Anthropic's servers
 
-As the diagram above shows, the harness stays on your machine, but the model runs on Anthropic's server — so **everything the harness sends the model leaves your machine and travels to that server.**
+As the diagram above shows, the harness stays on your machine, but the model runs on Anthropic's server. **Everything the harness sends the model leaves your machine and travels to that server.**
 
-Claude Code does **not** sort safe data from sensitive. It sends whatever you let it read — if you point it at a file full of names, those names go to the server. Nothing keeps personal, restricted, or health data local on its own. **Holding that data back is *your* job** — by not letting Claude read it in the first place.
+Claude Code does **not** sort safe data from sensitive. It sends whatever you let it read: point it at a file full of names and those names go to the server. Nothing keeps personal, restricted, or health data local on its own. **Holding that data back is your job**, and you do it by not letting Claude read the data in the first place.
 
-**Deciding what Claude Code may read is your responsibility.** Public data and your own code are fine; personal (PII), NDA/licensed, or health (PHI) data must not be sent — and the tool won't hold them back for you. What's approved depends on the data and the tool: see <a href="https://uit.stanford.edu/security/responsibleai" target="_blank" rel="noopener noreferrer">Responsible AI at Stanford</a> for which AI tools are cleared for which data-risk levels, and the <a href="https://www.gsb.stanford.edu/library/research-resources/usage-policy" target="_blank" rel="noopener noreferrer">GSB Library's eResources usage policy</a> for whether a licensed dataset may be used this way. We map out these data categories in full later this morning, in [AI Services & Data Privacy]({{ '/day1/stanford-ai-services/' | relative_url }}).
+Public data and your own code are fine. Personal (PII), NDA/licensed, or health (PHI) data must not be sent. What's approved depends on the data and the tool: see <a href="https://uit.stanford.edu/security/responsibleai" target="_blank" rel="noopener noreferrer">Responsible AI at Stanford</a> for which AI tools are cleared for which data-risk levels, and the <a href="https://www.gsb.stanford.edu/library/research-resources/usage-policy" target="_blank" rel="noopener noreferrer">GSB Library's eResources usage policy</a> for whether a licensed dataset may be used this way. We map out these data categories in full later this morning, in [AI Services & Data Privacy]({{ '/day1/stanford-ai-services/' | relative_url }}).
 
 ### Claude Code acts as you
 
-When Claude Code runs a command, edits a file, or pushes to GitHub, it does so with **your** credentials and **your** permissions. To the Yens, to GitHub, to anything it touches, the action looks exactly like *you* did it — there is no way for those systems to tell you apart from Claude acting on your behalf.
+When Claude Code runs a command, edits a file, or pushes to GitHub, it does so with **your** credentials and **your** permissions. To the Yens, to GitHub, to anything it touches, the action looks like you did it. Those systems cannot tell you apart from Claude acting on your behalf.
 
-That has a blunt consequence: **Claude Code can do anything you can do.** It can read, change, or delete any file you can, run any command you could run, and reach any system your account can reach. You can *ask* it to steer clear of something — "don't touch the `data/` folder," "never force-push" — and it will try, but that's a request, not a boundary the system enforces.
-
-{: .warning }
-> Treat it like handing your keyboard to a fast, capable assistant. Use **plan mode** when you want to see the plan before anything happens, review actions that are hard to undo (deleting files, force-pushing, sending data off your machine), and don't point it at anything you wouldn't do yourself.
+So **Claude Code can do anything you can do.** It can read, change, or delete any file you can, run any command you could run, and reach any system your account can reach. You can ask it to steer clear of something ("don't touch the `data/` folder," "never force-push") and it will try, but that's a request, not a boundary the system enforces.
 
 ---
 
 # Hands-On
 
-Everything above is reading; everything below is on the keyboard. Budget about **20
-minutes**, and work through it in order — each step assumes the one before it. If you are
+Everything above is reading; everything below is on the keyboard. If you are
 running short, [Take Claude Code for a Spin](#exercise--take-claude-code-for-a-spin) and
 [Install the github-for-research Skill](#exercise--install-the-github-for-research-skill) are the two that Part 2
 and the checkpoint actually need.
@@ -242,9 +237,9 @@ and the checkpoint actually need.
 ## Exercise — Take Claude Code for a Spin
 
 {: .exercise }
-> **Do this now.** On the Yens, load Claude Code, sign in through Stanford, and give it a first real task. This is the one Claude Code step everyone should complete.
+> On the Yens, load Claude Code, sign in through Stanford, and give it a first real task to see how it works.
 
-You've been working on the Yens all along — Claude Code runs there too. Connect the way you did in [Connecting to the Yens]({{ '/day1/connect-to-the-yens/' | relative_url }}) if you're not already on:
+You've been working on the Yens all along, and Claude Code runs there too. Connect the way you did in [Connecting to the Yens]({{ '/day1/connect-to-the-yens/' | relative_url }}) if you're not already on:
 
 ```bash
 ssh SUNetID@yen.stanford.edu
@@ -283,7 +278,7 @@ so the flow runs across both machines:
    ```
    {: .output }
 
-2. It tries to open a browser, cannot — there isn't one — and prints a long URL instead:
+2. It tries to open a browser, cannot (there isn't one), and prints a long URL instead:
    `Browser didn't open? Use the url below to sign in (c to copy)`. Press <kbd>c</kbd> to
    copy it, or select it by hand, then open it in the browser **on your laptop**.
 3. The Claude login page offers **Continue with Google**, **Continue with email**, and
@@ -301,7 +296,7 @@ so the flow runs across both machines:
 
 {: .note }
 > **Once per account, not once per node.** The credential is written to
-> `~/.claude/.credentials.json` in your home directory, which every Yen shares — so logging
+> `~/.claude/.credentials.json` in your home directory, which every Yen shares, so logging
 > in on yen1 also logs you in on yen4. Type `/status` to see which account a session is
 > using, and `/logout` to sign out.
 
@@ -310,14 +305,14 @@ so the flow runs across both machines:
 - Type `/cost` — see how many tokens this session has used (the *Tokens* box explains why this matters).
 - Press <kbd>Shift</kbd>+<kbd>Tab</kbd> — cycle through the permission modes: manual, accept edits, plan, and auto (see *Permission modes* above).
 
-**5 — Give it a real task.** No need to download anything yourself — just point Claude at a file on GitHub and say what you want:
+**5 — Give it a real task.** No need to download anything yourself. Point Claude at a file on GitHub and say what you want:
 
 ```
 > Download https://raw.githubusercontent.com/gsbdarc/yens-onboarding-2026/main/data/aws_links.csv and tell me how many SEC filings it lists, then show me the five accession numbers that sort last.
 ```
 {: .claude }
 
-Claude fetches the file, works out its shape, counts the rows, and answers. Notice what you *didn't* do: no `curl`, no `wc -l`, no `sort` or `tail`, no worrying about the header row — you said what you wanted, and it worked out how. That's the shift Claude Code represents.
+Claude fetches the file, works out its shape, counts the rows, and answers. Notice what you didn't have to do: no `curl`, no `wc -l`, no `sort` or `tail`, no worrying about the header row. You said what you wanted, and it worked out how.
 
 **6 — Quit, and move to your project.** Leave Claude Code by typing `/exit` (or pressing <kbd>Ctrl</kbd>+<kbd>D</kbd>). The next section sets things up inside your course repo, so move there now:
 
@@ -338,7 +333,7 @@ cd ~/yens-onboarding-2026
 {: .exercise }
 > Install the skill this course ships, and see where it lands on disk.
 
-You just met skills in the abstract; here's the one this course ships. **github-for-research** teaches Claude Code some opinionated, but informed, best practices about how to use GitHub as part of a research project at the GSB:
+**github-for-research** is a **skill** — the kind of standing instructions described above. It teaches Claude Code a set of opinionated practices for using GitHub on a research project at the GSB:
 
 - Do new work on a **branch**, never straight on `main`.
 - **Log problems as issues** — even ones you fix immediately.
@@ -353,7 +348,7 @@ bash scripts/install_github_for_research_skill.sh
 {: .yens }
 
 {: .note }
-> This is a one-time setup. Not sure if it's already installed? Just ask Claude Code — `> do you have the github-for-research skill?` — or run the command again; it's safe to re-run. The skill's home is `gsbdarc/claude-skill-github-for-research`.
+> This is a one-time setup. Not sure if it's already installed? Ask Claude Code (`> do you have the github-for-research skill?`), or run the command again; it's safe to re-run. The skill's home is `gsbdarc/claude-skill-github-for-research`.
 
 <details markdown="1">
 <summary>See it for yourself — Claude lives in hidden files</summary>
@@ -374,7 +369,7 @@ ls ~/.claude/skills
 ```
 {: .yens }
 
-The first reveals the hidden `.claude` folder among the other dotfiles; the second shows settings, skills, and memory; the third shows the skill you just installed, sitting there as an ordinary folder. Open one up — `cat ~/.claude/skills/github-for-research/SKILL.md` is the very text Claude will follow. Nothing here is magic: it's plain text in hidden files, readable and editable like anything else you've touched today.
+The first reveals the hidden `.claude` folder among the other dotfiles. The second shows settings, skills, and memory, and the third shows the skill you just installed, sitting there as an ordinary folder. Open it up: `cat ~/.claude/skills/github-for-research/SKILL.md` is the text Claude will follow.
 
 </details>
 
@@ -386,7 +381,7 @@ The first reveals the hidden `.claude` folder among the other dotfiles; the seco
 
 ### Bonus — investigate a well-kept repo
 
-A repository that follows these practices is one you can actually *understand* — by hand or with Claude Code. Try both on a real Stanford project: an analysis of whether San Francisco's graffiti 311 reports fell during COVID.
+A repository that follows these practices is one you can understand, by hand or with Claude Code. Try both on a real Stanford project: an analysis of whether San Francisco's graffiti 311 reports fell during COVID.
 
 <details markdown="1">
 <summary>Show steps</summary>
@@ -397,7 +392,7 @@ A repository that follows these practices is one you can actually *understand* �
 - How was the raw data cleaned, and where is that checked?
 - What's left to do? (Check the **Issues** tab and the commit history.)
 
-Notice how much you can piece together *because* the repo is organized and documented — and how long it takes.
+Notice how much you can piece together because the repo is organized and documented, and how long it takes.
 
 **With Claude Code.** Now let Claude do the reading. This is someone else's project, not your coursework, so clone it into the scratch folder you made earlier rather than dropping it into your course repo:
 
@@ -409,7 +404,7 @@ claude
 ```
 {: .yens }
 
-Now ask the same things in plain English — and notice the first sentence:
+Now ask the same things in plain English, and notice the first sentence:
 
 ```
 > Use the github-for-research skill. What research question does this project answer? How was the raw 311 data cleaned and where is that checked? Walk me through reproducing the main finding, and list anything left to do.
@@ -417,10 +412,10 @@ Now ask the same things in plain English — and notice the first sentence:
 {: .claude }
 
 {: .important }
-> **Name the skill.** A skill isn't guaranteed to kick in on its own — Claude decides whether it looks relevant, and often it just answers the question without it. Saying *"Use the github-for-research skill"* removes the guesswork. Get in the habit: when you want the research practices applied, ask for them by name. You'll do it again in the next exercise.
+> **Name the skill.** A skill isn't guaranteed to kick in on its own. Claude decides whether it looks relevant, and often it just answers the question without it. Saying *"Use the github-for-research skill"* removes the guesswork. Get in the habit: when you want the research practices applied, ask for them by name. You'll do it again in the next exercise.
 
 {: .tip }
-> Claude reads the README, the scripts, and the issue history and answers in seconds — but only *because* someone kept the repo the way this skill describes. Good practice is what makes a project answerable, by a person or by Claude.
+> Claude reads the README, the scripts, and the issue history and answers in seconds, but only because someone kept the repo the way this skill describes.
 
 **Quit Claude Code** with `/exit` when you're done reading.
 
@@ -429,10 +424,10 @@ Now ask the same things in plain English — and notice the first sentence:
 
 ---
 
-## Bonus — Put Claude Code to Work
+## Bonus — Have Claude Code drive GitHub and change this site
 
 {: .important }
-> **Bonus:** Publish your own copy of this site from your fork, then have Claude Code make a real change to it and open a pull request. Both walk the same loop a pro uses: plan, approve, act, review.
+> **Bonus:** Publish your own copy of this site from your fork, then have Claude Code make a real change to it and open a pull request. Both follow the same loop: plan, approve, act, review.
 
 This is extra practice. Publishing a site is not required for the Day 1 checkpoints.
 
@@ -441,7 +436,7 @@ This is extra practice. Publishing a site is not required for the Day 1 checkpoi
 
 Your fork already contains everything needed to publish this site, including the GitHub Actions workflow at `.github/workflows/pages.yml` that builds it. What it doesn't have is the switch turned on: GitHub leaves Actions and Pages off on a new fork until someone asks for them.
 
-You could click through the settings pages yourself. Instead let Claude do it — in **plan mode**, so you see what it intends before anything gets switched on. You have no particular reason to trust its first guess about how this site is wired together, and plan mode is how you find out cheaply.
+You could click through the settings pages yourself. Instead let Claude do it in **plan mode**, so you see what it intends before anything gets switched on. You have no particular reason to trust its first guess about how this site is wired together, and plan mode lets you check before anything runs.
 
 Go back to your course repo and launch Claude:
 
@@ -458,7 +453,7 @@ Press <kbd>Shift</kbd>+<kbd>Tab</kbd> until the mode line reads **plan mode**, t
 ```
 {: .claude }
 
-Claude reads `pages.yml`, works out that the site builds from `docs/` and deploys through Actions, and comes back with a plan — having run nothing. Read it. You should recognize the shape of what it proposes, even if you would not have written the commands yourself:
+Claude reads `pages.yml`, works out that the site builds from `docs/` and deploys through Actions, and comes back with a plan, having run nothing. Read it. You should recognize the shape of what it proposes, even if you would not have written the commands yourself:
 
 ```bash
 gh api -X PUT repos/YOUR_GITHUB_USERNAME/yens-onboarding-2026/actions/permissions -F enabled=true
@@ -468,7 +463,7 @@ gh run list --workflow pages.yml --limit 1
 ```
 {: .yens }
 
-That is `gh` doing something you have not used it for yet. Until now it has been a git convenience — cloning a repo, opening a pull request. Here it is a client for GitHub's whole REST API: `gh api` will call any endpoint GitHub exposes, authenticated as you. That is why Claude can change a repository's settings from the Yens with no browser anywhere in the loop.
+That is `gh` doing something you have not used it for yet. Until now it has been a git convenience: cloning a repo, opening a pull request. Here it is a client for GitHub's whole REST API: `gh api` will call any endpoint GitHub exposes, authenticated as you. That is why Claude can change a repository's settings from the Yens with no browser anywhere in the loop.
 
 Approve the plan and let it run. When the workflow finishes, your copy is live:
 
@@ -484,7 +479,7 @@ Approve the plan and let it run. When the workflow finishes, your copy is live:
 <details markdown="1">
 <summary>Add a dark-mode toggle — plan, review, merge</summary>
 
-Your fork is live now, and that raises the stakes in a useful way: anything that lands on `main` rebuilds and redeploys a public site. So here is a real change, handled the way a pro would — add a **dark-mode toggle**, a control readers can click to switch between light and dark that remembers their choice.
+Your fork is live now, and that raises the stakes in a useful way: anything that lands on `main` rebuilds and redeploys a public site. So here is a real change, handled properly — add a **dark-mode toggle**, a control readers can click to switch between light and dark that remembers their choice.
 
 1. **Plan before acting.** From your repo, start `claude` again and press <kbd>Shift</kbd>+<kbd>Tab</kbd> to enter **plan mode**, then ask:
    ```
@@ -492,12 +487,12 @@ Your fork is live now, and that raises the stakes in a useful way: anything that
    ```
    {: .claude }
 
-   Claude investigates and shows a plan **without changing anything**. Read it; refine it if you want. Two things in that prompt are doing real work:
+   Claude investigates and shows a plan **without changing anything**. Read it, and refine it if you want. Two parts of that prompt are doing real work:
 
    - **"Use the github-for-research skill"** — name it, the same habit as the last exercise. Without it Claude will happily commit straight to `main` and skip the branch and the pull request entirely. On a site that now deploys, straight to `main` means straight to published.
-   - **"You don't have to be thorough, it's a proof of concept"** — left to itself, Claude will go hunting for every color on the site and spend five minutes doing it. Scoping a task like this is one of the most useful things you can say to an AI assistant.
+   - **"You don't have to be thorough, it's a proof of concept"** — left to itself, Claude will go hunting for every color on the site and spend five minutes doing it. Scoping a task like this saves a lot of wasted effort.
 2. **Approve, implement, and open a PR.** Approve the plan, let Claude make the changes, and have it open a pull request.
-3. **Read the diff, then merge.** When Claude opens the PR it prints a link — follow it and open the **Files changed** tab. Reviewing that diff *is* the review, and it is how you confirm Claude did what you asked and nothing more. Then merge it, whichever way you like:
+3. **Read the diff, then merge.** When Claude opens the PR it prints a link. Follow it and open the **Files changed** tab. Reviewing that diff *is* the review, and it is how you confirm Claude did what you asked and nothing more. Then merge it, whichever way you like:
 
    - **In the browser** — open the PR and click **Merge pull request**, then **Confirm merge**.
    - **In the terminal** — from your repo, `gh pr merge --merge`.
@@ -506,10 +501,10 @@ Your fork is live now, and that raises the stakes in a useful way: anything that
    Merging runs the Pages workflow again, and a minute later the toggle is live on your public copy.
 
 {: .note }
-> Look at what it did: the work went on a **branch**, opened as a **pull request**, and the commit **credits Claude** — the good habits happened automatically, because you asked for the github-for-research skill.
+> Look at what it did: the work went on a **branch**, opened as a **pull request**, and the commit **credits Claude**. The good habits happened automatically, because you asked for the github-for-research skill.
 
 {: .tip }
-> This is the everyday Claude Code loop for anything non-trivial: **plan → approve → act → review.** Plan mode is your safety net — Claude does its looking around *inside* the plan, and you see exactly what it intends before a single file changes. And reading the diff before you merge is the habit worth taking away: an agent that edits ten files when you expected one is no disaster if you looked first.
+> This is the everyday Claude Code loop for anything non-trivial: **plan → approve → act → review.** Claude does its investigating inside the plan, so you see what it intends before a single file changes. Then read the diff before you merge: an agent that edits ten files when you expected one is far easier to deal with if you spot it there.
 
 </details>
 
