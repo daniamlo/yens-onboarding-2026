@@ -270,15 +270,34 @@ claude
 **3 — Sign in.** The first launch asks you to log in, and there is no browser on the Yens —
 so the flow runs across both machines:
 
-1. Claude Code prints a long **login URL** and waits. Press <kbd>c</kbd> to copy it, or select it and
-   copy it by hand, then open it in the browser **on your laptop**.
-2. Sign in with your **Stanford account** — SUNet ID and Duo. If you are offered a choice of
-   accounts, pick the Stanford one: a personal Claude account is not covered by Stanford's
-   terms, and your usage would not count against Stanford's allowance.
-3. The browser hands back a **code** rather than returning you to the terminal, because
-   nothing on your laptop can reach a callback server running on the Yens. Copy the code and
-   paste it at the terminal's `Paste code here if prompted` prompt.
-4. The terminal says `Login successful`. Press <kbd>Enter</kbd> to continue.
+1. Claude Code asks you to **select a login method**. Choose **1 — Claude account with
+   subscription**. The other two are for paying by API usage or through Bedrock, Foundry or
+   Vertex; neither is how Stanford's plan works.
+
+   ```
+   Select login method:
+
+   ❯ 1. Claude account with subscription · Pro, Max, Team, or Enterprise
+     2. Anthropic Console account · API usage billing
+     3. 3rd-party platform · Amazon Bedrock, Microsoft Foundry, or Vertex AI
+   ```
+   {: .output }
+
+2. It tries to open a browser, cannot — there isn't one — and prints a long URL instead:
+   `Browser didn't open? Use the url below to sign in (c to copy)`. Press <kbd>c</kbd> to
+   copy it, or select it by hand, then open it in the browser **on your laptop**.
+3. The Claude login page offers **Continue with Google**, **Continue with email**, and
+   **Continue with SSO**. Use **Continue with SSO** with your Stanford address, so you land
+   on Stanford's own login — SUNet ID and Duo. Do not sign in with a personal Claude
+   account: it is not covered by Stanford's terms, and the usage would not come out of
+   Stanford's allowance.
+4. Claude Code then asks to connect to your account, listing what it will be allowed to do —
+   read your profile, count usage against your subscription, see your Claude Code sessions,
+   manage connectors, upload files. Click **Authorize**.
+5. The browser hands back a **code** rather than returning you to the terminal, because
+   nothing on your laptop can reach a callback server running on the Yens. Copy it and paste
+   it at the terminal's `Paste code here if prompted` prompt. The characters come out as
+   `*`, which is normal — the paste did land.
 
 {: .note }
 > **Once per account, not once per node.** The credential is written to
