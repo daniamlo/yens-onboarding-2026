@@ -37,6 +37,7 @@ A `.env` file holds environment-variable assignments outside your program:
 ```text
 ANTHROPIC_API_KEY=<secret value>
 ```
+{: .file }
 
 Your code reads the value by name when it runs. Share the code and keep the credential
 file out of Git.

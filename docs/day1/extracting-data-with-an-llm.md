@@ -194,6 +194,7 @@ diff scripts/extract_form_3_step1_basic.py scripts/extract_form_3_step2_logged.p
 > ---
 > >     python3 scripts/extract_form_3_step2_logged.py
 > ```
+> {: .output }
 >
 > Read `<` as “from Stage 1” and `>` as “from Stage 2.” These are output markers,
 > not commands to type. Unchanged lines are omitted; identical files produce no output.
