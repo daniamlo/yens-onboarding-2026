@@ -258,7 +258,6 @@ scp ~/Downloads/gsb-logo.png SUNetID@yen.stanford.edu:/scratch/users/SUNetID/
 
 - The form is always `scp SOURCE DESTINATION`. Here the source is local and the
   destination is `remote_host:remote_path` — an upload.
-- No `-r`: that flag is for directories, and this is a single file.
 - The **trailing slash** on the destination means *"put it inside that folder."* Your
   scratch directory already exists, so that is what you want.
 
@@ -319,7 +318,7 @@ want the file to move.
 you start the whole thing over. At terabyte scale that is a losing bet.
 
 Use **<a href="https://rcpedia.stanford.edu/_user_guide/data_transfer/" target="_blank" rel="noopener noreferrer">Globus</a>** instead — the
-Yens collection is **`GSB-Yen`**. RCpedia recommends it for large transfers precisely
+Yens collection is **`GSB/DARC yen`**. RCpedia recommends it for large transfers precisely
 because it parallelizes and checkpoints, so an interrupted transfer picks up where it left
 off rather than starting again.
 
