@@ -159,7 +159,7 @@ Set up your copy of the course repo and make your first commit now.
 **Step 1 — Fork the course repo**
 {: #fork-and-clone }
 
-A **fork** is your own copy of the course repo, living under your GitHub account. Everything you write over the next two days goes here — it's yours to keep after the course ends.
+A **fork** is your own copy of the course repo, living under your GitHub account. Everything you write over the next two days goes here.
 
 1. **Fork the repo.** Go to the <a href="https://github.com/gsbdarc/yens-onboarding-2026" target="_blank" rel="noopener noreferrer">course repo on GitHub</a> and click **Fork** in the top-right corner.
 2. **Turn on Issues.** Open your fork's <a href="https://github.com/YOUR_GITHUB_USERNAME/yens-onboarding-2026/settings" target="_blank" rel="noopener noreferrer">repository settings</a> and, under **Features**, tick ***Issues***. A fork starts with its issue tracker switched off, and you'll be logging issues later today.
@@ -206,7 +206,7 @@ gh auth setup-git   # let gh remember the token so git never asks you again
 ```
 {: .yens }
 
-Paste the token when `gh auth login` asks. The `gh auth setup-git` step then wires `gh` in as git's credential helper, so it hands over your token automatically on every `git push` — no browser, no device code, and no password prompt, now or in future sessions.
+Paste the token when `gh auth login` asks. The `gh auth setup-git` step then wires `gh` in as git's credential helper, so it hands over your token automatically on every `git push`. In the future, you can use git without needing to authenticate again.
 
 **Check it worked — file an issue from the command line.**
 
@@ -414,8 +414,8 @@ gh pr create --repo gsbdarc/yens-onboarding-2026 \
 ```
 {: .yens }
 
-You never need write access to our repo — you propose, we review. Genuinely: if you find
-something wrong in these pages, this is the way to tell us.
+You never need write access to our repo, but you can still propose changes using pull
+requests from your own fork.
 
 </details>
 

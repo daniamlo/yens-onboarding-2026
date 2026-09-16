@@ -11,8 +11,7 @@ permalink: /day1/part1/
 # Part 1 — Setup
 
 Nothing in this part does any research. It gets you a machine you can reach, an identity
-it recognizes, a way to move data to it, and an assistant that can drive all three — which
-is what everything else in the two days runs on.
+it recognizes, a way to move data to it, and an assistant that can drive all three.
 
 **9:00 to 10:30.** A short lecture on the two-day map and where your work will live, then
 a long work block to get yourself through the checkpoint at the end.
@@ -30,8 +29,6 @@ fast, do the bonus exercises to level up (rather than moving ahead to future sec
 ---
 
 ## Hands-On Lab
-
-Work through them in order — each builds on the one before.
 
 {: .tip }
 > There's lots of prose on these pages! If you're running low on time, feel free to skim

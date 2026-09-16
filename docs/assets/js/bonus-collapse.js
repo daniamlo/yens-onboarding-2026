@@ -34,7 +34,7 @@
 
   // What the bonus actually asks you to do, for sections with no numbered
   // "Bonus N" labels to count. Either the heading already names the task
-  // ("## Bonus — Put Claude Code to Work") or the body opens with a bold
+  // ("## Bonus — Have Claude Code drive GitHub…") or the body opens with a bold
   // title, which is then promoted out of the body into the summary so it is
   // not shown twice. Ambiguous bodies — several bold titles, no heading
   // suffix — fall through to the generic label rather than pick one.

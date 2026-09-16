@@ -9,11 +9,8 @@ permalink: /day1/your-data/
 
 # Your Data on the Yens
 
-You are logged in. Before you put anything on this machine, learn where it goes — because
-the three places you can put it behave very differently, and only one of the differences
-is recoverable when you get it wrong.
-
-The short version: **two of the three are backed up, and the fast one is not.**
+You are logged in. Before you put anything on this machine, learn where it goes
+depending on who you need to share it with and how big it is.
 
 ---
 
@@ -142,8 +139,8 @@ just creates a second version that immediately starts to drift from yours.
 <details class="quiz" markdown="1">
 <summary><span class="qnum">2</span><span class="qtext">The replication package for a paper you are reading is 40 GB and you want to poke around in it. Where does it go?</span></summary>
 
-**Scratch** — `/scratch/users/SUNetID/`. It will not fit in an 80 GB home, and you do not
-need it backed up: it is somebody else's published archive, so you can always download it
+**Scratch** — `/scratch/users/SUNetID/`. It would take up fully half of your 80 GB home,
+and you do not need it backed up: it is somebody else's published archive, so you can always download it
 again. That makes the 90-day purge harmless. Copy out only the pieces you end up keeping.
 
 </details>
@@ -171,14 +168,11 @@ on yen4.
 <details class="quiz" markdown="1">
 <summary><span class="qnum">5</span><span class="qtext">Your very clever AI agent deleted your project folder. Can you recover it?</span></summary>
 
-**Probably.** Home and projects are snapshotted — hourly for a day, daily for a week,
+**Maybe.** Home and projects are snapshotted — hourly for a day, daily for a week,
 weekly for two months, monthly for a year — and you can reach them through a hidden
-`.snapshot` directory at the top level of the folder. Two caveats:
-RCpedia warns snapshots are still being populated on the new file system, so do not treat
-them as a guarantee, and **scratch has none at all**.
+`.snapshot` directory at the top level of the folder.
 
-The better answer is the one from the next section: if the work was committed and pushed,
-your repository on GitHub is a copy the agent cannot touch.
+If the work was committed and pushed, your repository on GitHub is still safe.
 
 </details>
 
@@ -221,18 +215,16 @@ to GitHub, it is already somewhere else.
 
 ## Getting Data In and Out
 
-Knowing where data goes is half of it; putting it there is the other half. Three routes,
-depending on where the data is coming from — you will practice the first one below:
+Which tool you use depends on where the data is coming from. You will practice the first
+one below:
 
 - **From your laptop** — `scp`. Run it *from the laptop*, in its own terminal, not from inside your SSH session.
 - **From GitHub** — `git clone`, which is how the course repo gets here in Git & GitHub.
-- **Moving a lot of files at once** — wildcards and pipes: `*`, `grep`, `cut`, `sort`, `uniq`.
 
 {: .tip }
 > If you're unfamiliar with the command line, check out our
-> [reference guide]({{ '/reference/command-line/' | relative_url }}). This compressed class
-> can't teach you everything you need to know, but our longer self-paced course may provide
-> some helpful tools.
+> [reference guide]({{ '/reference/command-line/' | relative_url }}). We include links to our
+> longer self-paced course, with more detailed exercises on using command line tools.
 
 ---
 
@@ -258,7 +250,6 @@ scp ~/Downloads/gsb-logo.png SUNetID@yen.stanford.edu:/scratch/users/SUNetID/
 
 - The form is always `scp SOURCE DESTINATION`. Here the source is local and the
   destination is `remote_host:remote_path` — an upload.
-- No `-r`: that flag is for directories, and this is a single file.
 - The **trailing slash** on the destination means *"put it inside that folder."* Your
   scratch directory already exists, so that is what you want.
 
@@ -300,7 +291,7 @@ something else: every host you name has to be reachable *from there*.
 <details class="quiz" markdown="1">
 <summary><span class="qnum">2</span><span class="qtext">If you are on the Yens, will <code>scp laptop:gsb_logo.png ~/gsb_logo.png</code> work?</span></summary>
 
-**No**, and it fails for a reason worth understanding rather than memorizing.
+**No.**
 
 `laptop` is not a name the Yens can look up, but substituting your machine's real name
 would not save it either: your laptop has no public address and no SSH server listening,
@@ -319,8 +310,8 @@ want the file to move.
 you start the whole thing over. At terabyte scale that is a losing bet.
 
 Use **<a href="https://rcpedia.stanford.edu/_user_guide/data_transfer/" target="_blank" rel="noopener noreferrer">Globus</a>** instead — the
-Yens collection is **`GSB-Yen`**. RCpedia recommends it for large transfers precisely
-because it parallelizes and checkpoints, so an interrupted transfer picks up where it left
-off rather than starting again.
+Yens collection is **`GSB/DARC yen`**. RCpedia recommends it for large transfers because it
+parallelizes and checkpoints, so an interrupted transfer picks up where it left off rather
+than starting again.
 
 </details>
