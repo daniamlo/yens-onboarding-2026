@@ -600,25 +600,27 @@ tspan.personalize-token-unset {
   color: #6a7280;
   border-left-color: #6a7280;
 }
-.main-content div.highlighter-rouge.notebook > div.highlight > pre.highlight {
-  border-top-left-radius: 0;
-  border-left: 3px solid #6b21a8;
-}
-
 /* The tab butts against the box's top-left corner, so that corner has to be
-   square — but the corner, and the border it belongs to, are on `pre.highlight`
-   (see the box-edge rule near the top of this file), not on `div.highlight`.
-   The two `> div.highlight` rules above therefore never reached anything: the
-   box kept its 6px radius, which is the notch that shows beside the tab and
-   moves with the zoom level, and the 3px coloured edge never drew at all.
-   Squaring the corner on the element that actually has the border.
+   square. It is squared on `div.highlight` above, which does work — measured:
+   that element carries both the 3px coloured rail and a 0px radius on every
+   tagged block.
 
-   Scoped to `.file` on purpose — the other three tabs have the identical bug,
-   and this is the one we are checking against the live site first. If it holds,
-   fold all four into one selector group and delete the inert rules. */
-.main-content div.highlighter-rouge.file > div.highlight > pre.highlight {
+   What it does not fix is `pre.highlight` *inside* it, which keeps the 6px
+   radius from the box-edge rule near the top of this file. That is the notch
+   that shows beside the tab. Squaring it here, on all six tabs.
+
+   Only the radius. An earlier pass also gave `pre.highlight` a
+   `border-left: 3px`, which drew a second coloured rail 15px inside the
+   first — two nested boxes, most visible on `.file` where the rail is a
+   strong green. `div.highlight` already draws the rail; `pre.highlight` only
+   needs its corner squared. */
+.main-content div.highlighter-rouge.yens > div.highlight > pre.highlight,
+.main-content div.highlighter-rouge.laptop > div.highlight > pre.highlight,
+.main-content div.highlighter-rouge.claude > div.highlight > pre.highlight,
+.main-content div.highlighter-rouge.notebook > div.highlight > pre.highlight,
+.main-content div.highlighter-rouge.file > div.highlight > pre.highlight,
+.main-content div.highlighter-rouge.output > div.highlight > pre.highlight {
   border-top-left-radius: 0;
-  border-left: 3px solid #166534;
 }
 
 /* ── Keys look like keys ──────────────────────────────────────────────────
