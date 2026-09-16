@@ -135,6 +135,7 @@ real    0m31.234s
 user    2m0.682s
 sys     0m2.212s
 ```
+{: .output }
 
 - **real** — wall-clock time: how long you actually waited
 - **user** — CPU time your code consumed across all cores; if `user` > `real`, the script used multiple cores in parallel

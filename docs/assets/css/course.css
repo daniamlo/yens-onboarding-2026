@@ -503,7 +503,8 @@ tspan.personalize-token-unset {
 .main-content div.highlighter-rouge.laptop,
 .main-content div.highlighter-rouge.claude,
 .main-content div.highlighter-rouge.notebook,
-.main-content div.highlighter-rouge.file {
+.main-content div.highlighter-rouge.file,
+.main-content div.highlighter-rouge.output {
   border: 0;
   border-radius: 0;
   background: none;
@@ -512,7 +513,8 @@ tspan.personalize-token-unset {
 .main-content div.highlighter-rouge.laptop::before,
 .main-content div.highlighter-rouge.claude::before,
 .main-content div.highlighter-rouge.notebook::before,
-.main-content div.highlighter-rouge.file::before {
+.main-content div.highlighter-rouge.file::before,
+.main-content div.highlighter-rouge.output::before {
   display: inline-block;
   position: relative;
   z-index: 1;
@@ -533,7 +535,8 @@ tspan.personalize-token-unset {
 .main-content div.highlighter-rouge.laptop > div.highlight,
 .main-content div.highlighter-rouge.claude > div.highlight,
 .main-content div.highlighter-rouge.notebook > div.highlight,
-.main-content div.highlighter-rouge.file > div.highlight {
+.main-content div.highlighter-rouge.file > div.highlight,
+.main-content div.highlighter-rouge.output > div.highlight {
   border-top-left-radius: 0;     /* the tab sits on this corner */
   border-left-width: 3px;
 }
@@ -585,6 +588,17 @@ tspan.personalize-token-unset {
   content: "In [ ]:  Jupyter Notebook Cell";
   color: #6b21a8;
   border-left-color: #6b21a8;
+}
+
+/* What the terminal printed back, rather than something to type. Deliberately
+   the quiet one: the other five tabs are saturated because each answers "where
+   do I run this?", and output answers a different question. Grey keeps it
+   legible as a label without competing with the block a student is meant to
+   act on. */
+.main-content div.highlighter-rouge.output::before {
+  content: "\21B3  Output";
+  color: #6a7280;
+  border-left-color: #6a7280;
 }
 .main-content div.highlighter-rouge.notebook > div.highlight > pre.highlight {
   border-top-left-radius: 0;
