@@ -426,8 +426,8 @@
 /* Both marks are squared in their viewBox, so the two labels start at the same
    x. Sized in em to track the label instead of pinning a pixel height. */
 .personalize-name svg {
-  width: 1.15em;
-  height: 1.15em;
+  width: 1.6em;
+  height: 1.6em;
   flex: none;
 }
 .personalize-input {
