@@ -379,40 +379,23 @@ print(response.choices[0].message.content)
 > pointing at your table's server. Ollama speaks the OpenAI API, so any client, library or
 > tool that can talk to a hosted model can talk to the one you are running.
 
+{: .note }
+> **The querying side needs no GPU.** Talking to the server is just HTTP requests, so the
+> code above runs anywhere on the Yens that can reach that host and port: an interactive
+> Yen, a notebook or terminal on [JupyterHub](https://yen1.stanford.edu/jupyter/hub/home),
+> or another Slurm job on a plain CPU node. Only the machine *serving* the model needs a card.
+
 {: .warning }
 > Your `base_url` answers only while that one person is still holding the `srun` allocation
 > *with `ollama serve` running inside it*. The weights live in **their** scratch too, so if
 > somebody else has to take over, they start a server and pull the model again into their
 > own.
 
-### The same model on a CPU
-
-{: .demo }
-> You may have noticed that the server URL pointed to a GPU node on the Yens.
->
-> Now let's run queries on a local LLM that's running on a **CPU** instead.
->
-> We'll send the same query to each and time them — same model, same prompt, same code, with only the hardware underneath differing.
->
-> What do you notice about the runtime?
-
-<details markdown="1">
-<summary>What we saw (expand after discussion)</summary>
-
-The CPU still answers — but slower, and *how much* slower depends on:
-
-- The prompt length;
-- The length of the answer the model generates;
-- The GPU and CPU — chip model, and how many cores the CPU has; and
-- The model size.
-
-A small difference per query can still be a meaningful one, for a task that runs a lot of them — a few seconds each becomes hours across thousands of queries.
-
-And our example is on the favorable end for the CPU: a short query, of low complexity, against a small model. A longer prompt, a longer answer, or a bigger model all widen the gap.
-
-</details>
-
-We won't go into the details of why a GPU is faster than a CPU at running LLM queries. It's enough to say that the demo above illustrates GPUs are much faster in general — though we've also seen that a CPU may be enough for basic tasks.
+{: .note }
+> **A CPU can serve a model too.** Ollama runs without a GPU, and for a small model and a
+> short prompt it will answer. It is just much slower, and the gap widens with a longer
+> prompt, a longer answer, or a bigger model. So a CPU is fine for *testing* that your code
+> works end to end — the GPU nodes are there for the real LLM work.
 
 ## Beyond Ollama
 
@@ -461,4 +444,4 @@ LLM](https://rcpedia.stanford.edu/blog/category/llm/) on RCpedia.
 - Ask for a GPU with `--partition=gpu` and `--gres=gpu:1`, and pin the card with `--constraint` — VRAM is what caps model size
 - Your table served an open-weight model on a GPU node and queried it, and the prompts never left the Yens
 - Pointing a client at your own server instead of a hosted one is a change of `base_url`
-- The same model runs on a CPU too, just more slowly
+- Anything that can reach the server's host and port can query it — an interactive Yen, JupyterHub, or a CPU-only Slurm job; only the serving node needs a GPU
