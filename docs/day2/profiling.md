@@ -76,14 +76,20 @@ hostname
 ```
 {: .yens }
 
-You will see something like `yen2`. Remember this — your second terminal must connect to the exact same node.
+{: .tip }
+> **Pick what it printed** and every command on this page fills itself in, so you can copy
+> them without editing. The load balancer hands out yen1–yen5, so yours is probably not the
+> one in the examples — and both terminals have to land on the *same* node.
+>
+> <span class="personalize-field"><select id="yen-node" data-personalize="yen"><option value="">choose…</option><option>yen1</option><option>yen2</option><option>yen3</option><option>yen4</option><option>yen5</option></select><label class="personalize-affix personalize-affix-end" for="yen-node">.stanford.edu</label></span>
 
 **Step 2 — Open a second terminal on the same node.**
 
-In the new terminal, SSH directly to that node by name (not the load-balanced `yen.stanford.edu`, which could land you on a different machine):
+In the new terminal, SSH directly to that node by name — not the load-balanced
+`yen.stanford.edu`, which could land you on a different machine:
 
 ```bash
-ssh SUNetID@yen2.stanford.edu   # replace yen2 with whatever hostname showed above
+ssh SUNetID@YENNODE.stanford.edu
 ```
 {: .laptop }
 
@@ -96,7 +102,7 @@ source .venv/bin/activate
 {: .yens }
 
 {: .note }
-> 💡 **Skip the second login.** A fresh `ssh` means another password + Duo prompt. To avoid re-authenticating, open a terminal through JupyterHub instead: browse to that node's hub (e.g. `https://yen2.stanford.edu/jupyter/`), then **New → Terminal**. You're already authenticated there, and it drops you onto that exact node — ideal for the second monitoring terminal.
+> 💡 **Skip the second login.** A fresh `ssh` means another password + Duo prompt. To avoid re-authenticating, open a terminal through JupyterHub instead: browse to that node's hub, `https://YENNODE.stanford.edu/jupyter/`, then **New → Terminal**. You're already authenticated there, and it drops you onto that exact node — ideal for the second monitoring terminal.
 
 **Step 3 — Start `watch userload` in Terminal 2 *first*, before running anything.**
 
@@ -109,7 +115,7 @@ watch userload
 - `userload` shows how many **cores** you're using and what **% of the node's memory** you're holding — your total footprint across all your processes on this node:
 
   ```text
-  SUNetID  |  0.34 Cores  |  0.00% Mem  on yen2
+  SUNetID  |  0.34 Cores  |  0.00% Mem  on YENNODE
   ```
 
 - `watch` re-runs it every 2 seconds, so the numbers refresh live

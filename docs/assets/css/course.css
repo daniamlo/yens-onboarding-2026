@@ -351,6 +351,18 @@
   color: #1c1e21;
 }
 .main-content .personalize-field input:focus { outline: none; }
+/* Profiling's node field is a <select> rather than a text box — only five
+   interactive Yens exist, so picking one removes the typo — but it sits in the
+   same chip as the text fields and must not look like a stray form control. */
+.main-content .personalize-field select {
+  padding: 0.25rem 0.55rem;
+  border: 0;
+  background: none;
+  font-family: "Source Code Pro", "SFMono-Regular", menlo, monospace;
+  font-size: 0.9rem;
+  color: #1c1e21;
+}
+.main-content .personalize-field select:focus { outline: none; }
 /* A trailing affix — @stanford.edu on the SUNet field — is the same chip with
    its divider on the other side. */
 .main-content .personalize-affix-end {
