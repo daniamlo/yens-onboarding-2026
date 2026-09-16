@@ -323,19 +323,39 @@ git commit -m "Ignore secrets"
 ```
 {: .yens }
 
-Then prove it works. Make a file that looks like a leaked credential and check that git
-cannot see it:
+Then prove it works. Make a file that looks like a leaked credential, and try to commit it
+the way you would by mistake:
 
 ```bash
 echo "ANTHROPIC_API_KEY=not-a-real-key" > .env
-git status --short
+git add .env
+git check-ignore -v .env
 ```
 {: .yens }
 
-`.env` should not appear. `git status` lists what git is tracking or about to track — if
-your secret file is absent from that list, `.gitignore` is doing its job. (If it *does*
-appear, the file was already tracked before you ignored it; `git rm --cached .env` fixes
-that.)
+Git should refuse the `git add`, and say so:
+
+```
+The following paths are ignored by one of your .gitignore files:
+.env
+hint: Use -f if you really want to add them.
+```
+
+Then `check-ignore` names the rule that stopped it — here, line 2 of `.gitignore`:
+
+```
+.gitignore:2:.env	.env
+```
+
+**Both of those are things you can see.** That matters more than it sounds: the obvious
+test is to run `git status` and check that `.env` is *missing* from the list, but an empty
+list looks the same whether the rule worked, you are in the wrong directory, or you never
+created the file at all. With a secret, "no warning" is not the same as "safe". Here,
+working is loud and broken is silent — `check-ignore` prints nothing if no rule matches,
+and `git add` quietly stages the file.
+
+(If `git add` *succeeds*, the file was already tracked before you ignored it.
+`git rm --cached .env` fixes that.)
 
 {: .note }
 > The `.env` file itself comes back in [Managing API Keys]({{ '/day1/api-keys/' | relative_url }}),
