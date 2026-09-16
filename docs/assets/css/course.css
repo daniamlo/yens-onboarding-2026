@@ -412,12 +412,23 @@
   margin-bottom: 0.45rem;
   cursor: text;
 }
+/* Flex rather than block so the label can carry its service's mark beside the
+   text. Still full-width, so the input stays stacked underneath. */
 .personalize-name {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   margin-bottom: 0.12rem;
   font-size: 0.7rem;
   font-weight: 600;
   color: #55524d;
+}
+/* Both marks are squared in their viewBox, so the two labels start at the same
+   x. Sized in em to track the label instead of pinning a pixel height. */
+.personalize-name svg {
+  width: 1.6em;
+  height: 1.6em;
+  flex: none;
 }
 .personalize-input {
   display: block;

@@ -5,7 +5,15 @@
      components/footer.html (mobile), so it renders twice on every page — hence
      data-personalize attributes rather than ids, which would collide. The
      script treats every input carrying the same data-personalize value as a
-     view onto one stored value and keeps them in step. -->
+     view onto one stored value and keeps them in step.
+
+     The marks are inlined verbatim, not redrawn. GitHub is octicons'
+     mark-github-16 (MIT), inheriting the label colour via currentColor.
+     Stanford is the plain block "S" from Wikimedia Commons — PD-textlogo for
+     copyright, still a Stanford trademark, so it is used unaltered and keeps
+     its own cardinal fills. Its viewBox is padded from 65.078 to 98.113 wide
+     to centre the 65-wide mark in a square box: both icons then render the
+     same width, which is what keeps the two labels starting at the same x. -->
 
 <div class="personalize">
   <p class="personalize-title">Your details</p>
@@ -13,14 +21,20 @@
     themselves in. Stored in this browser.</p>
 
   <label class="personalize-row">
-    <span class="personalize-name">SUNet ID</span>
+    <span class="personalize-name">
+      <svg viewBox="-16.5175 0 98.113 98.113" aria-hidden="true" focusable="false"><g><polygon points="0.84 14.582 0.84 49.735 12.79 61.688 41.354 61.686 41.354 73.893 26.669 73.893 26.669 65.932 0.866 65.932 0.866 85.15 12.866 97.245 52.227 97.245 64.177 85.304 64.177 49.745 52.001 37.978 25.785 37.978 25.786 24.888 40.293 24.887 40.293 33.909 64.176 33.909 64.177 14.596 50.804 0.915 14.596 0.915" fill="#8C1515"/><g><path fill="#fff" d="m2.413 15.294v33.82l11.017 11.019s26.638 0 29.497-0.001c0 2.412 0 12.98-0.001 15.391-2.497 0-15.368 0-17.868 0.002 0.001-2.037 0.001-7.961 0.001-7.961l-22.62-0.001v16.952l11.051 11.178h38.067l11.009-11.017v-34.253l-11.263-10.814h-27.13c0.001-2.445 0.001-13.831 0-16.275h17.693v9.02h20.7v-17.052l-12.437-12.755h-34.911l-12.805 12.747z"/><polygon points="15.868 4.253 4.015 16.083 4.015 48.571 14.098 58.656 44.527 58.656 44.526 77.233 23.475 77.233 23.475 69.271 4.038 69.272 4.038 83.956 14.142 94.215 50.913 94.215 60.981 84.123 60.983 51.181 50.634 41.316 22.589 41.315 22.588 21.856 43.467 21.856 43.467 30.878 60.981 30.878 60.983 16.083 49.482 4.253" fill="#8C1515"/></g></g></svg>
+      SUNet ID
+    </span>
     <input class="personalize-input" data-personalize="sunet" type="text"
            placeholder="e.g. jdoe" spellcheck="false" autocapitalize="none"
            autocorrect="off" autocomplete="off">
   </label>
 
   <label class="personalize-row">
-    <span class="personalize-name">GitHub</span>
+    <span class="personalize-name">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg>
+      GitHub
+    </span>
     <input class="personalize-input" data-personalize="github" type="text"
            placeholder="e.g. jane-doe" spellcheck="false" autocapitalize="none"
            autocorrect="off" autocomplete="off">
