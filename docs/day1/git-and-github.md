@@ -340,12 +340,14 @@ The following paths are ignored by one of your .gitignore files:
 .env
 hint: Use -f if you really want to add them.
 ```
+{: .output }
 
 Then `check-ignore` names the rule that stopped it — here, line 2 of `.gitignore`:
 
 ```
 .gitignore:2:.env	.env
 ```
+{: .output }
 
 **Both of those are things you can see.** That matters more than it sounds: the obvious
 test is to run `git status` and check that `.env` is *missing* from the list, but an empty

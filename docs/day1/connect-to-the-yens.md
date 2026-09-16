@@ -205,6 +205,7 @@ Host yen yen.stanford.edu yen? yen?? yen?.stanford.edu yen??.stanford.edu
 Host *
   ControlPath ~/.ssh/%r@%h:%p
 ```
+{: .file }
 
 Then try it:
 

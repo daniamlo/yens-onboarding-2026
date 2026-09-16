@@ -293,6 +293,7 @@ advertising once it is ready:
 ```
 Advertising server to clients at http://<node>:<port>
 ```
+{: .output }
 
 {: .warning }
 > **Leave that terminal open.** The server runs in the foreground, so closing the terminal
@@ -320,6 +321,7 @@ server rather than starting one of its own:
 ```
 Forwarding 'ollama pull llama3.2:1b' to http://<node>:<port>
 ```
+{: .output }
 
 **Give that URL to your table.**
 
@@ -338,6 +340,7 @@ The server answers with what it is holding:
 ```
 {"models":[{"name":"llama3.2:1b","model":"llama3.2:1b","modified_at":"2026-09-16T11:14:59.519153874-07:00","size":1321098329,"digest":"baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"1.2B","quantization_level":"Q8_0","context_length":131072,"embedding_length":2048},"capabilities":["completion","tools"]}]}
 ```
+{: .output }
 
 `parameter_size` is 1.2B and `size` is about 1.3 GB, which is why this model fits on any card
 the Yens have.

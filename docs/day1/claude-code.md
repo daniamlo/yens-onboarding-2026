@@ -341,6 +341,7 @@ Look at the last thing the installer printed:
 ```
 Skill installed at: /home/users/SUNetID/.claude/skills/github-for-research
 ```
+{: .output }
 
 That `.claude` is a **dotfile** — a name starting with a dot, which a plain `ls` won't show you. It's where Claude Code keeps its settings, skills, and memory. Go and look:
 
