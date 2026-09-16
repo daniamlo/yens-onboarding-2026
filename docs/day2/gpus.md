@@ -275,7 +275,7 @@ DARC keeps a helper repo that wraps the container and picks a free port for you:
 git clone https://github.com/gsbdarc/ollama_helper.git ~/ollama_helper
 cd ~/ollama_helper
 ml apptainer
-export SCRATCH_BASE=/scratch/users/$USER
+export SCRATCH_BASE=/scratch/users/SUNetID
 apptainer pull ollama.sif docker://ollama/ollama      # slow, the first time only
 source ollama.sh
 ollama serve
@@ -306,7 +306,7 @@ back the host and port it wrote down and forwards your request to the server:
 ```bash
 cd ~/ollama_helper
 ml apptainer
-export SCRATCH_BASE=/scratch/users/$USER
+export SCRATCH_BASE=/scratch/users/SUNetID
 source ollama.sh
 
 ollama pull llama3.2:1b
