@@ -1,36 +1,4 @@
-# Jekyll
-docs/_site/
-docs/.jekyll-cache/
-docs/.jekyll-metadata
-docs/vendor/
-docs/.bundle/
-docs/Gemfile.lock
-
-# OS / editor
-.DS_Store
-*.swp
-*.swo
-.vscode/
-.idea/
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
+# Secrets — never tracked
 .env
-.ipynb_checkpoints/
-
-# Potion Brawl (generated artifacts — the code + requirements.txt are the source)
-data/potion_brawl/output/
-
-# Slurm job output (regenerated in class).
-# results/ stays tracked -- the docs tell students to commit their extractions there.
-logs/
-*.log
-
-# Slides live in Google Drive, not git.
-# The build scripts here are deliberately untracked too -- they exist on disk
-# only, so keep a copy elsewhere if they matter.
-.instructor/slides/
+*.pem
+*.key
