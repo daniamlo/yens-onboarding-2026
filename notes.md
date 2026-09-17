@@ -1,0 +1,1 @@
+- Updated notes.md by hand for the Part 1 checkpoint
