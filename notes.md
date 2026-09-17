@@ -1,1 +1,2 @@
 - Updated notes.md by hand for the Part 1 checkpoint
+- Used Claude Code to update the notes to complete the Part 1 checkpoint
