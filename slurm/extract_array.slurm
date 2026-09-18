@@ -3,10 +3,10 @@
 #SBATCH --partition=normal
 #SBATCH --output=logs/extract_%A_%a.out
 #SBATCH --error=logs/extract_%A_%a.err
-#SBATCH --time=00:03:00
+#SBATCH --time=00:06:00
 #SBATCH --mem=1G
 #SBATCH --cpus-per-task=1
-#SBATCH --array=0-99
+#SBATCH --array=0-495
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=daniamlo@stanford.edu
 
